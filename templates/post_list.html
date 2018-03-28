@@ -7,12 +7,17 @@ $.ajax({
     url: endpoint,
     success: function (data)
     {
-        var posts = data.posts
-        $('#posts').html(posts)
+	var posts = data.posts;
+	var ph = $('.posts');
+	$.each(posts, function(index, value) {
+		p = $('<div />');
+		p.text(value.title);
+		ph.append(p);
+	});
     },
     error: function (error_data) {
-        console.log("error")
-        console.log(error_data)
+        console.log("error");
+        console.log(error_data);
     }})
 {%  endblock %}
 </script>
